@@ -7,8 +7,51 @@
 <body>
 
   <script>
+    function player(){
+      input = window.prompt("Pick ")
+      playerSelect = input.toUpperCase()
+      return playerSelect;      
+    }
+
+    function computerPlay(){
+      const computer = ["ROCK","PAPER","SCISSORS"]
+      const compSelect = computer[Math.floor(Math.random() * computer.length)]
+      return compSelect;
+    }
+
+    const playerSelection = player()
+    const computerSelection = computerPlay()
+
+    function playRound(){
+      if (playerSelection == computerSelection){
+        message = " Tie... try again!"
+      }
+      else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
+        message = " you win!";
+      }
+      else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
+        message = " you win!";
+      }
+      else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
+        message = " you win!";
+      }
+      else{
+        message = " you lose";
+      }
+      result = "You Chose " + playerSelection + " computer chose " + computerSelection + message;
+      return result;
+      }
+      
     
+    
+    alert(playRound())
+    
+    
+  
+
+
 
   </script>
 </body>
 </html>
+
