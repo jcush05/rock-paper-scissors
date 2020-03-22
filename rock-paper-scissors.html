@@ -7,51 +7,75 @@
 <body>
 
   <script>
+i = 0;
+playerScore = 0;
+computerScore= 0;
+
+while (i < 5){
+  game();
+  i++;
+}
+if (playerScore > computerScore){
+  alert("You WON ! You scored " + playerScore + " Compter scored " + computerScore);
+}
+else if  (playerScore < computerScore){
+  alert("You LOST ! You scored " + playerScore + " Compter scored " + computerScore);
+}
+else {
+  alert("You TIED ! You scored " + playerScore + " Compter scored " + computerScore);
+  }
+
+  function game(){
+
     function player(){
-      input = window.prompt("Pick ")
-      playerSelect = input.toUpperCase()
-      return playerSelect;      
+        input = window.prompt("Pick Either Rock, Paper or Scissors")
+        playerSelect = input.toUpperCase()
+      return playerSelect;
     }
 
     function computerPlay(){
-      const computer = ["ROCK","PAPER","SCISSORS"]
-      const compSelect = computer[Math.floor(Math.random() * computer.length)]
+        const computer = ["ROCK","PAPER","SCISSORS"]
+        const compSelect = computer[Math.floor(Math.random() * computer.length)]
       return compSelect;
     }
 
+    function playRound(){
+        if (playerSelection == computerSelection){
+        message = " Tie... try again!"
+        }
+        else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
+          playerScore ++;
+        message = " you win!";
+        }
+        else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
+          playerScore ++;
+        message = " you win!";
+        }
+        else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
+          playerScore ++;
+        message = " you win!";
+        }
+        else{
+          computerScore ++;
+        message = " you lose";
+        }
+      result = "You Chose " + playerSelection + " computer chose " + computerSelection + message;
+      return result;
+    }
     const playerSelection = player()
     const computerSelection = computerPlay()
 
-    function playRound(){
-      if (playerSelection == computerSelection){
-        message = " Tie... try again!"
-      }
-      else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
-        message = " you win!";
-      }
-      else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
-        message = " you win!";
-      }
-      else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
-        message = " you win!";
-      }
-      else{
-        message = " you lose";
-      }
-      result = "You Chose " + playerSelection + " computer chose " + computerSelection + message;
-      return result;
-      }
-      
-    
-    
     alert(playRound())
-    
-    
-  
+  }
+
+
+
+
+
+
 
 
 
   </script>
 </body>
 </html>
-
